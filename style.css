@@ -1,0 +1,881 @@
+/* ===== GLOBAL STYLES ===== */
+:root {
+  --primary-color: #0c6ca1;
+  --primary-dark: #085183;
+  --primary-light: #34a0d4;
+  --secondary-color: #4caf50;
+  --text-color: #333;
+  --light-gray: #f8f9fa;
+  --medium-gray: #e9ecef;
+  --dark-gray: #343a40;
+  --accent-color: #ffc107;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset básico */
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+  padding-top: 70px;
+  /* Adjusted later based on navbar height and scroll state */
+  margin: 0;
+  background-color: var(--light-gray);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.section-title {
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 15px;
+  position: relative;
+  /* Keep if needed for pseudo-elements, otherwise maybe remove */
+  display: block;
+  /* CHANGED FROM inline-block */
+  /* width: fit-content; /* Optional: if you want block but tight width */
+  /* margin-left: auto;  /* Optional: Combine with width: fit-content */
+  /* margin-right: auto; /* Optional: Combine with width: fit-content */
+}
+
+.title-underline {
+  height: 4px;
+  width: 70px;
+  background: var(--primary-light);
+  margin: 0 auto 30px;
+  border-radius: 2px;
+  margin-bottom: 20px !important;
+}
+
+/* ===== NAVIGATION ===== */
+.navbar {
+  background-color: transparent;
+  transition: background-color 0.3s ease, padding 0.3s ease;
+  padding: 15px 0;
+  /* Ensure fixed-top class is present in HTML for this behavior */
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: white !important;
+  /* Initial state - white text */
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  /* Initial state - white text */
+  transition: color 0.3s ease;
+  font-weight: 500;
+  padding: 8px 16px;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus {
+  color: white;
+}
+
+.navbar-scrolled {
+  background-color: var(--primary-dark);
+  /* Dark background when scrolled */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
+  /* Slightly reduced padding */
+}
+
+/* Ensure text color remains readable when scrolled */
+.navbar-scrolled .navbar-brand,
+.navbar-scrolled .navbar-dark .navbar-nav .nav-link {
+  color: white !important;
+}
+
+.navbar-scrolled .navbar-dark .navbar-nav .nav-link:hover,
+.navbar-scrolled .navbar-dark .navbar-nav .nav-link:focus {
+  color: rgba(255, 255, 255, 0.9) !important;
+  /* Slightly dimmer on hover when scrolled */
+}
+
+
+/* ===== HEADER ===== */
+.custom-header {
+  /* Using the refined gradient + placeholder */
+  background: linear-gradient(rgba(12, 108, 161, 0.85), rgba(8, 81, 131, 0.9)), url('/imgs/Matriz\ Subida\ ao\ Anoitecer.webp') no-repeat center center;
+  background-size: cover;
+  color: #fff;
+  padding: 140px 0 100px;
+  text-align: center;
+  position: relative;
+  margin-bottom: 0;
+  /* Adjust margin/padding based on actual fixed navbar height */
+  margin-top: -70px;
+  /* Compensate for initial body padding */
+  padding-top: calc(140px + 70px);
+  /* Adjust top padding */
+}
+
+.parallax-bg {
+  background-attachment: fixed;
+  /* Keep parallax effect */
+}
+
+.header-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.custom-header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle-line {
+  height: 3px;
+  width: 100px;
+  background: var(--accent-color);
+  margin: 20px auto;
+}
+
+.custom-header h2 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+.custom-header p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  opacity: 0.9;
+}
+
+/* Original Author Badge for comparison (No changes needed here) */
+.author-badge {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 5px 15px;
+  /* Reference: 5px vertical padding */
+  border-radius: 20px;
+  font-size: 0.95rem;
+  /* Reference: 0.95rem font size */
+  font-style: italic;
+  /* Add vertical alignment if needed */
+  vertical-align: middle;
+  /* Helps align items on the same line */
+  margin-right: 10px;
+  /* Add some space between badge and button if needed */
+}
+
+/* Updated Button Styles - Keeping the refined version */
+.btn-explore {
+  background-color: var(--secondary-color);
+  color: white;
+  /* --- Adjustments --- */
+  padding: 7px 18px;
+  /* Reduced padding */
+  font-size: 0.95rem;
+  /* Reduced font size */
+  border-radius: 22px;
+  /* Adjusted border-radius */
+  /* line-height: 1.3; /* Optional: Adjust line-height if needed */
+  /* --- End Adjustments --- */
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  vertical-align: middle;
+  /* Match badge's vertical alignment */
+}
+
+.btn-explore:hover {
+  background-color: #3d8b40;
+  transform: translateY(-1px);
+  /* Slightly smaller lift on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: white;
+  text-decoration: none;
+}
+
+.btn-explore i {
+  margin-left: 6px;
+  /* Slightly reduce space before icon */
+  font-size: 0.9em;
+  /* Make icon slightly smaller relative to text */
+}
+
+.btn-explore.mt-4 {
+  margin-top: 1.5rem !important;
+  /* Bootstrap's default mt-4 */
+}
+
+
+/* ===== ABOUT SECTION ===== */
+#about {
+  background-color: white;
+  padding: 80px 0;
+}
+
+#about .lead {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.ods-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--medium-gray);
+  padding: 8px 15px;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+.ods-logo {
+  margin-right: 10px;
+  border-radius: 50%;
+  /* Make logo round */
+  width: 40px;
+  /* Explicit size */
+  height: 40px;
+  /* Explicit size */
+}
+
+/* ===== GALLERY SECTION ===== */
+#gallery {
+  background-color: var(--light-gray);
+  padding: 80px 0;
+}
+
+/* Filter Tabs */
+.filter-tabs {
+  margin-bottom: 40px;
+}
+
+.filter-tabs .nav-pills .nav-link {
+  color: var(--primary-color);
+  background-color: transparent;
+  border-radius: 20px;
+  padding: 8px 20px;
+  margin: 5px;
+  /* Spacing between tabs */
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  /* Prepare for hover/active border */
+}
+
+.filter-tabs .nav-pills .nav-link.active {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-color);
+}
+
+.filter-tabs .nav-pills .nav-link:hover:not(.active) {
+  background-color: var(--medium-gray);
+  border-color: var(--medium-gray);
+}
+
+.location {
+  display: flex;
+  align-items: center;
+}
+
+.location i {
+  color: var(--primary-color);
+  margin-right: 5px;
+}
+
+.tag {
+  /* display: inline-block; is overridden by flex */
+  background-color: var(--medium-gray);
+  color: var(--primary-color);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  /* margin-right: 8px;  REMOVED - use gap instead */
+  /* margin-bottom: 8px; REMOVED - use gap instead */
+  font-weight: 600;
+  transition: all 0.2s ease;
+  margin-bottom: 30px;
+}
+
+.tags {
+  display: flex;
+  /* Make the container a flexbox */
+  justify-content: center;
+  /* Center items along the main (horizontal) axis */
+  flex-wrap: wrap;
+  /* Allow items to wrap to the next line */
+  gap: 8px;
+  /* Consistent spacing between tags (replaces margins) */
+  margin-top: 20px;
+  /* Keep or adjust the top margin */
+}
+
+
+.tag:hover {
+  background-color: var(--primary-light);
+  color: white;
+}
+
+/* Gallery Images */
+.image-gallery-group {
+  padding: 0 25px 25px;
+  /* Padding inside the card */
+}
+
+.gallery-grid {
+  /* Use Bootstrap's row default negative margins if needed, or remove if using gap */
+  /* If using Bootstrap row directly, it handles gutters. If custom grid, adjust */
+  margin-left: -10px;
+  /* Adjust based on .image padding */
+  margin-right: -10px;
+  /* Adjust based on .image padding */
+}
+
+.gallery-grid .image {
+  padding: 10px;
+  /* Gutter space around image */
+}
+
+.img-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: block;
+  /* Ensure it behaves like a block */
+}
+
+.img-wrapper:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.img-wrapper img {
+  display: block;
+  /* Remove extra space below image */
+  width: 100%;
+  height: auto;
+  /* Maintain aspect ratio */
+  transition: transform 0.5s ease;
+  border-radius: var(--border-radius);
+  /* Match wrapper radius */
+}
+
+.img-wrapper:hover img {
+  transform: scale(1.03);
+}
+
+.img-overlay {
+  background: rgba(12, 108, 161, 0.7);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  /* Match wrapper radius */
+}
+
+.img-wrapper:hover .img-overlay {
+  opacity: 1;
+}
+
+.img-overlay i {
+  color: #fff;
+  font-size: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* No posts message */
+.no-posts {
+  background-color: white;
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  color: #6c757d;
+}
+
+.no-posts i {
+  color: var(--medium-gray);
+  /* Lighter icon color */
+}
+
+
+/* ===== CALL TO ACTION SECTION ===== */
+.cta-section {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+  color: white;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.cta-section h3 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.cta-section p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-cta {
+  background-color: white;
+  color: var(--primary-dark);
+  border: none;
+  padding: 12px 30px;
+  font-weight: 600;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  /* Remove underline */
+  display: inline-block;
+  /* Ensure proper behavior */
+}
+
+.btn-cta:hover {
+  background-color: var(--accent-color);
+  color: var(--dark-gray);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  /* Keep underline removed on hover */
+}
+
+
+/* ===== FOOTER ===== */
+.custom-footer {
+  background-color: var(--dark-gray);
+  color: #f8f9fa;
+  padding: 60px 0 30px;
+  margin-top: 0;
+  /* Ensure no extra space above footer */
+}
+
+.custom-footer h4 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  color: white;
+  font-weight: 600;
+}
+
+.custom-footer p {
+  margin-bottom: 20px;
+  opacity: 0.8;
+  line-height: 1.7;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #f8f9fa;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+  color: white;
+  text-decoration: none;
+  padding-left: 5px;
+  /* Subtle indent on hover */
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* ===== LIGHTBOX ===== */
+#overlay {
+  background: rgba(0, 0, 0, 0.9);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* display: none; /* Controlled by JS */
+  /* Removed redundant comment */
+  /* *** CORREÇÃO AQUI: Adicionado Flexbox para centralizar *** */
+  display: flex;
+  /* Changed from none to flex */
+  justify-content: center;
+  /* Centraliza horizontalmente */
+  align-items: center;
+  /* Centraliza verticalmente */
+  z-index: 9999;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  flex-direction: column;
+  /* Mantém imagem e legenda empilhadas */
+  padding: 20px;
+  /* Adiciona um respiro nas bordas */
+  opacity: 0;
+  /* Start hidden for fade effect */
+  visibility: hidden;
+  /* Use visibility for better performance */
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+  /* Fade out transition */
+}
+
+#overlay.visible {
+  /* Class added by JS to show */
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease;
+}
+
+#overlay img {
+  max-width: 90%;
+  max-height: 80vh;
+  /* Limita altura para caber na tela */
+  object-fit: contain;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  margin: 0;
+  /* Remove margens automáticas */
+  opacity: 1;
+  /* Ensure image is fully visible */
+  transition: opacity 0.3s ease;
+  /* Transition for preloader */
+}
+
+#caption {
+  color: white;
+  font-size: 1rem;
+  margin-top: 15px;
+  /* Reduzido espaço acima da legenda */
+  text-align: center;
+  max-width: 80%;
+}
+
+#nextButton,
+#prevButton,
+#exitButton {
+  position: absolute;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10000;
+  /* Above the image */
+  border: none;
+  /* Ensure no default button border */
+  padding: 0;
+  /* Ensure no default button padding */
+}
+
+#nextButton:hover,
+#prevButton:hover,
+#exitButton:hover {
+  background: rgba(12, 108, 161, 0.7);
+  /* Use primary color variant */
+}
+
+#nextButton {
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#prevButton {
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#exitButton {
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  /* Smaller exit button */
+  height: 40px;
+  /* Smaller exit button */
+  font-size: 1.2rem;
+  /* Smaller icon */
+}
+
+/* ===== ANIMATIONS ===== */
+.post-card.animate__fadeInUp {
+  opacity: 1;
+  /* Final state for the animation */
+  /* Let Animate.css handle the transform/timing */
+  animation-duration: 0.8s;
+  /* Optional: adjust duration */
+  animation-delay: 0.1s;
+  /* Optional: adjust delay */
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 991px) {
+  /* Keep body padding consistent if navbar height changes on scroll */
+  /* body { padding-top: 70px; } /* Adjust if navbar height is always 70px */
+
+  .custom-header {
+    padding: 120px 0 80px;
+    /* Recalculate padding-top if navbar height changes */
+    /* margin-top: -70px; */
+    /* padding-top: calc(120px + 70px); */
+  }
+
+  .custom-header h1 {
+    font-size: 2.3rem;
+  }
+
+  .custom-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .post-text-content h3 {
+    font-size: 1.4rem;
+  }
+
+  /* Footer column stacking */
+  .custom-footer .col-md-8,
+  .custom-footer .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    /* Center align text in columns */
+    margin-bottom: 30px;
+    /* Increase spacing between stacked columns */
+  }
+
+  .custom-footer .col-md-4:last-child {
+    margin-bottom: 0;
+    /* Remove bottom margin from last element */
+  }
+
+  .custom-footer .footer-links {
+    display: inline-block;
+    /* Allow centering */
+    text-align: center;
+    /* Center links list */
+  }
+
+  @media (max-width: 767px) {
+
+    /* Adjust body padding for potentially smaller navbar height */
+    body {
+      padding-top: 56px;
+    }
+
+    /* Example for Bootstrap default collapsed height */
+
+    .custom-header {
+      padding: 100px 0 70px;
+      margin-top: -56px;
+      /* Match new body padding-top */
+      padding-top: calc(100px + 56px);
+      /* Adjust top padding */
+      background-attachment: scroll;
+      /* Disable parallax on smaller devices */
+    }
+
+    .custom-header h1 {
+      font-size: 2rem;
+    }
+
+    .subtitle-line {
+      width: 80px;
+      margin: 15px auto;
+    }
+
+    .custom-header h2 {
+      font-size: 1.2rem;
+    }
+
+    .filter-tabs .nav-pills {
+      flex-wrap: wrap;
+      /* Allow tabs to wrap */
+      justify-content: center;
+    }
+
+    .filter-tabs .nav-pills .nav-link {
+      margin-bottom: 8px;
+      /* Space below wrapped tabs */
+    }
+
+    /* Smaller lightbox controls */
+    #nextButton,
+    #prevButton {
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+    }
+
+    #exitButton {
+      width: 35px;
+      height: 35px;
+      font-size: 1rem;
+    }
+
+    .cta-section h3 {
+      font-size: 1.6rem;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+    }
+
+    #overlay {
+      padding: 10px;
+      /* Less padding in lightbox */
+    }
+
+    #overlay img {
+      max-width: 95%;
+      max-height: 85vh;
+    }
+  }
+
+  @media (max-width: 575px) {
+    /* Body padding might be the same as 767px, adjust if needed */
+    /* body { padding-top: 56px; } */
+
+    /* Navbar brand might need size adjustment */
+    .navbar-brand {
+      font-size: 1.3rem;
+    }
+
+    /* Header adjustments */
+    /* .custom-header { margin-top: -56px; padding-top: calc(100px + 56px); } */
+    .custom-header h1 {
+      font-size: 1.8rem;
+    }
+
+    /* Card content padding */
+    .post-text-content {
+      padding: 20px;
+    }
+
+    .image-gallery-group {
+      padding: 0 20px 20px;
+    }
+
+    /* Gallery grid adjustments */
+    .gallery-grid {
+      margin-left: -5px;
+      margin-right: -5px;
+    }
+
+    .gallery-grid .image {
+      opacity: 0;
+      /* Start hidden for JS animation */
+      transition: opacity 0.5s ease;
+      /* Optional: fallback transition */
+    }
+
+    .gallery-grid .image.animate__fadeInUp {
+      opacity: 1;
+      /* Final state for the animation */
+      /* Animate.css handles transform/timing */
+      animation-duration: 0.8s;
+      animation-delay: 0.1s;
+    }
+
+
+    /* Footer alignment */
+    .custom-footer {
+      text-align: center;
+    }
+
+    .footer-links {
+      text-align: center;
+      /* Ensure centered */
+    }
+  }
+
+  /* ===== UTILITY CLASSES (Keep for consistency) ===== */
+  .text-primary {
+    color: var(--primary-color) !important;
+  }
+
+  .bg-primary {
+    background-color: var(--primary-color) !important;
+  }
+
+  .text-accent {
+    color: var(--accent-color) !important;
+  }
+
+  .bg-light {
+    background-color: var(--light-gray) !important;
+  }
+
+  .shadow {
+    box-shadow: var(--box-shadow) !important;
+  }
+
+  .rounded {
+    border-radius: var(--border-radius) !important;
+  }}
